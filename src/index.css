@@ -38,20 +38,25 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* Futuristic theme extras */
+    --primary-energize: 217 91% 60%; /* electric blue */
+    --accent-energize: 190 95% 55%;  /* cyan */
+    --violet-energize: 265 85% 60%;  /* violet */
+
+    /* Gradients & shadows */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary-energize)) 0%, hsl(var(--accent-energize)) 50%, hsl(var(--violet-energize)) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(210 40% 96%) 100%);
+    --shadow-elegant: 0 8px 30px hsl(217 21% 14% / 0.1);
+    --shadow-glow: 0 10px 30px -5px hsl(var(--accent-energize) / 0.35), 0 0 40px -10px hsl(var(--primary-energize) / 0.3);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -100,6 +105,16 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
+}
+
+@layer utilities {
+  .bg-gradient-primary { background-image: var(--gradient-primary); }
+  .bg-gradient-subtle { background-image: var(--gradient-subtle); }
+  .shadow-elegant { box-shadow: var(--shadow-elegant); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .hover-scale { @apply transition-transform duration-200 hover:scale-105; }
+  .story-link { @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left; }
+  .pointer-glow { background: radial-gradient(600px circle at var(--x,50%) var(--y,50%), hsl(var(--accent-energize) / 0.25), transparent 60%); }
 }
