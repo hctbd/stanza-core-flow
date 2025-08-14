@@ -40,7 +40,7 @@ const Features = () => {
       <div className="container mx-auto">
         <header className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-3">
-            Automate intake → billing with one platform
+            Automate intake → Billing with one platform
           </h2>
           <p className="text-muted-foreground">
             Stanza orchestrates specialized agents across the care journey—built for busy clinicians and operations teams.
