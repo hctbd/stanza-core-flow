@@ -25,11 +25,8 @@ const SiteFooter = () => {
         <div>
           <h3 className="font-display text-2xl font-semibold mb-3">Talk to Stanza</h3>
           <p className="text-muted-foreground max-w-md">
-            Ready to see how Stanza Health can reduce administrative burden and unlock better outcomes? Request a demo.
+            Ready to see how Stanza Health can reduce administrative burden and unlock better outcomes? Contact the founders.
           </p>
-          <div className="mt-6 text-sm text-muted-foreground">
-            Or email us at <a className="story-link" href="mailto:hello@stanza.health">hello@stanza.health</a>
-          </div>
         </div>
         <form onSubmit={handleSubmit} className="bg-card border rounded-lg p-6 shadow-elegant grid grid-cols-1 gap-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -40,7 +37,7 @@ const SiteFooter = () => {
           <textarea name="notes" placeholder="What would you like to explore?" className="min-h-28 rounded-md border bg-background p-3"/>
           <div>
             <Button type="submit" variant="hero" className="min-w-[180px]" disabled={loading}>
-              <Mail /> {loading ? 'Sending…' : 'Request demo'}
+              <Mail /> {loading ? 'Sending…' : 'Contact'}
             </Button>
           </div>
         </form>
