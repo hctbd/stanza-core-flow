@@ -42,7 +42,7 @@ const Index = () => {
         <Hero />
         <Features />
 
-        <section id="insights" className="py-20">
+        <section id="insights" className="py-16">
           <div className="container mx-auto">
             <header className="max-w-2xl mx-auto text-center mb-12">
               <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-3">Population insights, natively</h2>

@@ -4,39 +4,39 @@ import { Activity, FileSearch, Stethoscope, Coins, Database, ShieldCheck } from 
 const features = [
   {
     title: "Stanza Scribe™",
-    desc: "Real-time diagnosis and treatment suggestions during consultations.",
+    desc: "Real-time diagnosis and treatment suggestions during consultations with AI-powered clinical decision support.",
     icon: Stethoscope,
   },
   {
     title: "Preconsult Summaries",
-    desc: "AI-curated charts and histories ready before the patient enters.",
+    desc: "AI-curated patient charts and medical histories automatically prepared before each appointment.",
     icon: FileSearch,
   },
   {
     title: "Lab Interpreter",
-    desc: "Automated lab analysis with clear clinical explanations.",
+    desc: "Automated laboratory result analysis with clear clinical explanations and actionable insights.",
     icon: Activity,
   },
   {
     title: "Billing Automation",
-    desc: "From coding to claims—reduce denials and speed reimbursement.",
+    desc: "End-to-end revenue cycle management from medical coding to claims processing and reimbursement.",
     icon: Coins,
   },
   {
     title: "EHR Integration",
-    desc: "Drop-in connectors for legacy systems with seamless data flow.",
+    desc: "Seamless connectors for legacy electronic health record systems with real-time data synchronization.",
     icon: Database,
   },
   {
     title: "Compliance & Security",
-    desc: "HIPAA-ready architecture, audit trails, and least-privilege access.",
+    desc: "Enterprise-grade HIPAA compliance with comprehensive audit trails and role-based access controls.",
     icon: ShieldCheck,
   },
 ];
 
 const Features = () => {
   return (
-    <section id="features" className="py-20 md:py-28">
+    <section id="features" className="py-16">
       <div className="container mx-auto">
         <header className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-3">
@@ -50,18 +50,11 @@ const Features = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map(({ title, desc, icon: Icon }) => (
             <Card key={title} className="hover-scale border-border/70">
-              <CardHeader>
+              <CardHeader className="pb-6">
                 <div className="h-10 w-10 rounded-md bg-gradient-primary shadow-glow mb-4" />
                 <CardTitle className="text-xl flex items-center gap-2"><Icon className="text-primary"/> {title}</CardTitle>
-                <CardDescription>{desc}</CardDescription>
+                <CardDescription className="text-base leading-relaxed">{desc}</CardDescription>
               </CardHeader>
-              <CardContent>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  <li>• Fast setup, minimal disruption</li>
-                  <li>• Human-in-the-loop controls</li>
-                  <li>• Clear, traceable reasoning</li>
-                </ul>
-              </CardContent>
             </Card>
           ))}
         </div>
