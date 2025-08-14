@@ -1,7 +1,38 @@
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import { Stethoscope } from "lucide-react";
+import { useState } from "react";
 
 const BrandHeader = () => {
+  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
+
+  const handleContactFounders = async () => {
+    setLoading(true);
+    
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: { type: 'founders' }
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message sent",
+        description: "The founders will be notified and will reach out soon!",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <header className="sticky top-0 z-30 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <nav className="container mx-auto flex items-center justify-between py-4">
@@ -18,9 +49,14 @@ const BrandHeader = () => {
           <a href="#contact" className="story-link">Contact</a>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="hero" className="hover-scale">
+          <Button 
+            variant="hero" 
+            className="hover-scale" 
+            onClick={handleContactFounders}
+            disabled={loading}
+          >
             <Stethoscope className="opacity-90" />
-            Contact founders
+            {loading ? 'Sending...' : 'Contact founders'}
           </Button>
         </div>
       </nav>

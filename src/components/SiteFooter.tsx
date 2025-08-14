@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import { Mail } from "lucide-react";
 import { useState } from "react";
 
@@ -7,16 +8,39 @@ const SiteFooter = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      type: 'waitlist' as const,
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      org: formData.get('org') as string,
+      notes: formData.get('notes') as string,
+    };
+
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: data
+      });
+
+      if (error) throw error;
+
       toast({
         title: "Request received",
         description: "Thanks! Our team will reach out shortly.",
       });
-    }, 700);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
