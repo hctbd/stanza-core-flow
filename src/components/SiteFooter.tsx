@@ -34,7 +34,7 @@ const SiteFooter = () => {
             <input required name="email" type="email" placeholder="Work email" className="h-11 rounded-md border bg-background px-3"/>
           </div>
           <input name="org" placeholder="Organization" className="h-11 rounded-md border bg-background px-3"/>
-          <textarea name="notes" placeholder="What would you like to explore?" className="min-h-28 rounded-md border bg-background p-3"/>
+          <textarea name="notes" placeholder="Any particular features you are interesed in?" className="min-h-28 rounded-md border bg-background p-3"/>
           <div>
             <Button type="submit" variant="hero" className="min-w-[180px]" disabled={loading}>
               <Mail /> {loading ? 'Sending…' : 'Join Waitlist'}
