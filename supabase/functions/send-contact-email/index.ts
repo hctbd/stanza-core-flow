@@ -34,7 +34,7 @@ const handler = async (req: Request): Promise<Response> => {
       subject = "Contact Request from Stanza Health Website";
       html = `
         <h2>Someone wants to contact the founders!</h2>
-        <p>A visitor clicked the "Contact founders" button on your website.</p>
+        <p><strong>Email:</strong> ${email || 'Not provided'}</p>
         <p><strong>Timestamp:</strong> ${new Date().toLocaleString()}</p>
         <p>Please reach out to discuss Stanza Health opportunities.</p>
       `;

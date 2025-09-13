@@ -1,19 +1,30 @@
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Stethoscope } from "lucide-react";
 import { useState } from "react";
 
 const BrandHeader = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const handleContactFounders = async () => {
+  const handleContactFounders = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setLoading(true);
+    
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email') as string;
     
     try {
       const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: { type: 'founders' }
+        body: { 
+          type: 'founders',
+          email: email
+        }
       });
 
       if (error) throw error;
@@ -22,6 +33,7 @@ const BrandHeader = () => {
         title: "Message sent",
         description: "The founders will be notified and will reach out soon!",
       });
+      setOpen(false);
     } catch (error) {
       toast({
         title: "Error",
@@ -49,15 +61,34 @@ const BrandHeader = () => {
           <a href="#contact" className="story-link">Contact</a>
         </div>
         <div className="flex items-center gap-3">
-          <Button 
-            variant="hero" 
-            className="hover-scale" 
-            onClick={handleContactFounders}
-            disabled={loading}
-          >
-            <Stethoscope className="opacity-90" />
-            {loading ? 'Sending...' : 'Contact founders'}
-          </Button>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <Button variant="hero" className="hover-scale">
+                <Stethoscope className="opacity-90" />
+                Contact founders
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle>Contact Founders</DialogTitle>
+              </DialogHeader>
+              <form onSubmit={handleContactFounders} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email">Your email</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+                <Button type="submit" disabled={loading} className="w-full">
+                  {loading ? 'Sending...' : 'Send contact request'}
+                </Button>
+              </form>
+            </DialogContent>
+          </Dialog>
         </div>
       </nav>
     </header>
