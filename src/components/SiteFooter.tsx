@@ -20,6 +20,17 @@ const SiteFooter = () => {
       notes: formData.get('notes') as string,
       type: 'waitlist'
     };
+
+    // Validate required fields
+    if (!data.name || !data.email) {
+      toast({
+        title: "Required fields missing",
+        description: "Please fill in your full name and work email.",
+        variant: "destructive",
+      });
+      setLoading(false);
+      return;
+    }
     
     try {
       // Store in database
