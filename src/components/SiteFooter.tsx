@@ -14,24 +14,43 @@ const SiteFooter = () => {
     
     const formData = new FormData(e.currentTarget);
     const data = {
-      type: 'waitlist' as const,
       name: formData.get('name') as string,
       email: formData.get('email') as string,
-      org: formData.get('org') as string,
+      organization: formData.get('org') as string,
       notes: formData.get('notes') as string,
+      type: 'waitlist'
     };
-
+    
     try {
-      const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: data
+      // Store in database
+      const { error: dbError } = await supabase
+        .from('contact_submissions')
+        .insert(data);
+
+      if (dbError) throw dbError;
+
+      // Send email notification
+      const { error: emailError } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          type: 'waitlist',
+          name: data.name,
+          email: data.email,
+          org: data.organization,
+          notes: data.notes,
+        }
       });
 
-      if (error) throw error;
+      if (emailError) {
+        console.warn('Email notification failed:', emailError);
+      }
 
       toast({
         title: "Request received",
         description: "Thanks! Our team will reach out shortly.",
       });
+      
+      // Reset form
+      (e.target as HTMLFormElement).reset();
     } catch (error) {
       toast({
         title: "Error",

@@ -16,8 +16,10 @@ const Hero = () => {
             Automate the entire administrative workflow from intake to billing. Stanza delivers AI-powered preconsult summaries, lab interpretations, and real-time diagnosis & treatment suggestions via Stanza Scribe™—seamlessly integrated with legacy EHR systems.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Button variant="hero" size="lg" className="w-full sm:w-auto h-14 px-12 text-lg">
-              <PlayCircle /> Join Waitlist
+            <Button variant="hero" size="lg" className="w-full sm:w-auto h-14 px-12 text-lg" asChild>
+              <a href="#contact">
+                <PlayCircle /> Join Waitlist
+              </a>
             </Button>
           </div>
           <div className="mt-6 flex items-center justify-center gap-4 text-sm text-muted-foreground">
