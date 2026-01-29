@@ -1,6 +1,7 @@
 import BrandHeader from "@/components/BrandHeader";
 import Hero from "@/components/sections/Hero";
 import Features from "@/components/sections/Features";
+import DataFlowDiagram from "@/components/sections/DataFlowDiagram";
 import SiteFooter from "@/components/SiteFooter";
 import { LineChart, Users, Brain } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,8 +10,8 @@ import { useEffect } from "react";
 const Index = () => {
   useEffect(() => {
     // Minimal SEO enhancements for SPA
-    document.title = "Stanza Health — AI Agentic Platform for Healthcare";
-    const desc = "Stanza Health automates clinical operations from intake to billing with AI agents: summaries, lab interpretation, Stanza Scribe™, and population insights.";
+    document.title = "Stanza Health - ABDM Native Data Analytics for Indian Healthcare";
+    const desc = "Stanza Health integrates unstructured medical data with your EHR to unify patient histories, enable cross-institution analytics, and unlock Government ABDM DHIS incentives.";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', desc);
   }, []);
@@ -22,13 +23,9 @@ const Index = () => {
     url: typeof window !== 'undefined' ? window.location.origin : "",
     sameAs: [],
     logo: "/favicon.ico",
-    department: [{
-      "@type": "Organization",
-      name: "Stanza Scribe",
-    }],
     makesOffer: {
       "@type": "SoftwareApplication",
-      name: "Stanza Health Platform",
+      name: "ABDM Data Analytics Platform",
       applicationCategory: "HealthApplication",
       operatingSystem: "Web",
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }
@@ -40,6 +37,7 @@ const Index = () => {
       <BrandHeader />
       <main>
         <Hero />
+        <DataFlowDiagram />
         <Features />
 
         <section id="insights" className="py-16">
