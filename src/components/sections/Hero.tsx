@@ -10,10 +10,10 @@ const Hero = () => {
       <div className="container mx-auto relative py-20 md:py-28">
         <div className="mx-auto max-w-3xl text-center animate-enter">
           <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight mb-6">
-            Stanza Health — AI Agentic Platform for Hospitals & Clinics
+            Stanza Health: India's ABDM Compliant Data Backbone
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Automate the entire administrative workflow from intake to billing. Stanza delivers AI-powered preconsult summaries, lab interpretations, and real-time diagnosis & treatment suggestions via Stanza Scribe™—seamlessly integrated with legacy EHR systems.
+            Your Data, Unified. Your Revenue, Unlocked. ABDM data unification and analytics for modern healthcare.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button variant="hero" size="lg" className="w-full sm:w-auto h-14 px-12 text-lg" asChild>
