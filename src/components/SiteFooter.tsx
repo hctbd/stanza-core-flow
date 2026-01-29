@@ -18,7 +18,7 @@ const SiteFooter = () => {
       email: formData.get('email') as string,
       organization: formData.get('org') as string,
       notes: formData.get('notes') as string,
-      type: 'waitlist'
+      type: 'pilot'
     };
 
     // Validate required fields
@@ -77,9 +77,9 @@ const SiteFooter = () => {
     <footer id="contact" className="border-t border-border bg-gradient-subtle">
       <div className="container mx-auto py-16 grid grid-cols-1 md:grid-cols-2 gap-10">
         <div>
-          <h3 className="font-display text-2xl font-semibold mb-3">Talk to Stanza</h3>
+          <h3 className="font-display text-2xl font-semibold mb-3">Join the Pilot Program</h3>
           <p className="text-muted-foreground max-w-md">
-            Ready to see how Stanza Health can reduce administrative burden and unlock better outcomes? Join the Waitlist!
+            Be among the first to integrate with India's ABDM ecosystem. Early access partners get hands-on onboarding and dedicated support.
           </p>
         </div>
         <form onSubmit={handleSubmit} className="bg-card border rounded-lg p-6 shadow-elegant grid grid-cols-1 gap-4">
@@ -91,7 +91,7 @@ const SiteFooter = () => {
           <textarea name="notes" placeholder="Any particular features you are interesed in?" className="min-h-28 rounded-md border bg-background p-3"/>
           <div>
             <Button type="submit" variant="hero" className="min-w-[180px]" disabled={loading}>
-              <Mail /> {loading ? 'Sending…' : 'Join Waitlist'}
+              <Mail /> {loading ? 'Sending…' : 'Join Pilot Program'}
             </Button>
           </div>
         </form>

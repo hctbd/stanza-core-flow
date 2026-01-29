@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Check, FileText, PlayCircle } from "lucide-react";
+import { Check, Rocket } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -9,23 +9,26 @@ const Hero = () => {
       </div>
       <div className="container mx-auto relative py-20 md:py-28">
         <div className="mx-auto max-w-3xl text-center animate-enter">
+          <span className="inline-block bg-secondary text-secondary-foreground border rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+            Currently in MVP Development
+          </span>
           <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight mb-6">
-            Stanza Health: India's ABDM Compliant Data Backbone
+            ABDM Native Data Analytics
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Your Data, Unified. Your Revenue, Unlocked. ABDM data unification and analytics for modern healthcare.
+            Stanza Health integrates unstructured medical data with your EHR to unify patient histories, enable cross-institution analytics, and unlock Government ABDM DHIS incentives.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button variant="hero" size="lg" className="w-full sm:w-auto h-14 px-12 text-lg" asChild>
               <a href="#contact">
-                <PlayCircle /> Join Waitlist
+                <Rocket /> Join Pilot Program
               </a>
             </Button>
           </div>
           <div className="mt-6 flex items-center justify-center gap-4 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2"><Check className="text-primary"/> No learning curve</div>
-            <div className="flex items-center gap-2"><Check className="text-primary"/> No administrative friction</div>
-            <div className="flex items-center gap-2"><Check className="text-primary"/> Prevent physician burnout</div>
+            <div className="flex items-center gap-2"><Check className="text-primary"/> ABDM Compliant</div>
+            <div className="flex items-center gap-2"><Check className="text-primary"/> DHIS Incentives Ready</div>
+            <div className="flex items-center gap-2"><Check className="text-primary"/> Cross-Institution Analytics</div>
           </div>
         </div>
 
